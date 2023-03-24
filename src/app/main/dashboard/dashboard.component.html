@@ -1,0 +1,21 @@
+<h2>Top Heroes</h2>
+
+<ng-container *ngIf="heroes$ | async as heroes">
+  <div class="heroes-menu">
+    <a class="heroes-menu__link" *ngFor="let hero of heroes"
+       routerLink="/detail/{{hero.id}}">
+      {{hero.name}}
+    </a>
+  </div>
+</ng-container>
+
+
+<app-hero-search [formControl]="searchCtrl"></app-hero-search>
+
+<ul class="search-result">
+  <li *ngFor="let heroesSearch of heroesSearch$ | async">
+    <a class="search-result__link" routerLink="/detail/{{heroesSearch.id}}">
+      {{heroesSearch.name}}
+    </a>
+  </li>
+</ul>

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {CommonModule, Location} from '@angular/common'
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {delay, filter, finalize, map, switchMap, tap} from 'rxjs';
+import {catchError, delay, filter, finalize, map, of, switchMap, tap} from 'rxjs';
 
 import {heroFn, updateFn} from '../api.heroes';
 import {Hero} from '../interfaces/hero.interface';
@@ -33,6 +33,10 @@ export class HeroDetailComponent {
     delay(2000),
     switchMap((id: number) => this._heroFn(id).pipe(
       tap(_ => this.snackbarService.openSnackBar(`fetched hero id=${id}`)),
+      catchError(error => {
+        this.loaderService.hideLoader();
+        return of({} as Hero)
+      }),
       finalize(() => this.loaderService.hideLoader()),
     )),
   );

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterLinkWithHref} from '@angular/router';
-import {switchMap} from 'rxjs';
+import {catchError, of, switchMap} from 'rxjs';
 
 import {addFn, deleteFn, heroesFn} from '../api.heroes';
 import {Hero} from '../interfaces/hero.interface';
@@ -27,14 +27,18 @@ export class HeroesComponent {
 
     this.heroes$ = this._addFn({name} as Hero)
       .pipe(
-        switchMap(() => this._heroesFn()),
+        switchMap(() => this._heroesFn().pipe(
+          catchError(error => of([])),
+        )),
       );
   }
 
   delete(hero: Hero): void {
     this.heroes$ = this._deleteFn(hero.id)
       .pipe(
-        switchMap(() => this._heroesFn()),
+        switchMap(() => this._heroesFn().pipe(
+          catchError(error => of([])),
+        )),
       );
   }
 }

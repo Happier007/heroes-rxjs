@@ -4,14 +4,16 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {RouterLinkWithHref} from '@angular/router';
 import {
+  catchError,
   debounceTime,
   delay,
   distinctUntilChanged,
   filter,
   finalize,
-  map,
+  map, of,
   shareReplay,
-  switchMap, tap,
+  switchMap,
+  tap,
 } from 'rxjs';
 
 import {heroesFn, searchFn} from '../api.heroes';
@@ -56,7 +58,9 @@ export class DashboardComponent {
     .pipe(
       debounceTime(300),
       distinctUntilChanged(),
+      switchMap((term: string) => this._searchFn(term).pipe(
+        catchError(error => of([])),
+      )),
       shareReplay(1),
-      switchMap((term: string) => this._searchFn(term)),
     )
 }

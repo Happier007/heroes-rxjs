@@ -1,12 +1,10 @@
-/* DashboardComponent's private CSS styles */
-
 h2 {
   text-align: center;
 }
 
 .heroes-menu {
   padding: 0;
-  margin: auto;
+  margin: 2rem -0.5rem 1rem;
   max-width: 1000px;
 
   /* flexbox */
@@ -17,7 +15,6 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-content: flex-start;
   align-items: flex-start;
 }
@@ -33,7 +30,7 @@ h2 {
   text-align: center;
   width: 100%;
   min-width: 70px;
-  margin: .5rem auto;
+  margin: 0.5rem 0.5rem;
   box-sizing: border-box;
 
   /* flexbox */
@@ -41,7 +38,6 @@ h2 {
   flex: 0 1 auto;
   align-self: auto;
 }
-
 
 @media (min-width: 600px) {
   .heroes-menu__link {
@@ -52,31 +48,4 @@ h2 {
 
 .heroes-menu__link:hover {
   background-color: black;
-}
-
-.search-result {
-  margin-top: 0;
-  padding-left: 0;
-}
-
-.search-result li {
-  list-style-type: none;
-}
-
-.search-result__link {
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  display: inline-block;
-  width: 100%;
-  max-width: 600px;
-  padding: .5rem;
-  box-sizing: border-box;
-  text-decoration: none;
-  color: black;
-}
-
-.search-result__link:hover {
-  background-color: #435A60;
-  color: white;
 }

@@ -1,7 +1,7 @@
-import {Routes} from '@angular/router';
-import {DashboardComponent} from './main/dashboard/dashboard.component';
-import {HeroDetailComponent} from './main/hero-detail/hero-detail.component';
-import {HeroesComponent} from './main/heroes/heroes.component';
+import { Routes } from '@angular/router';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { HeroDetailComponent } from './main/hero-detail/hero-detail.component';
+import { HeroesComponent } from './main/heroes/heroes.component';
 
 export const AppRoutes: Routes = [
   {
@@ -29,4 +29,4 @@ export const AppRoutes: Routes = [
     path: '**',
     redirectTo: 'dashboard',
   },
-]
+];

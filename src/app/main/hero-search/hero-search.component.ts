@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {RouterLinkWithHref} from '@angular/router';
+import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-hero-search',
@@ -14,7 +14,8 @@ import {RouterLinkWithHref} from '@angular/router';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => HeroSearchComponent),
       multi: true,
-    }],
+    },
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroSearchComponent implements ControlValueAccessor {
@@ -25,11 +26,11 @@ export class HeroSearchComponent implements ControlValueAccessor {
   }
 
   writeValue(search: string) {
-    this.value = search
+    this.value = search;
   }
 
   registerOnChange(fn: any) {
-    this.onChange = fn
+    this.onChange = fn;
   }
 
   registerOnTouched(fn: any) {}
